@@ -137,6 +137,18 @@ app.post("/api/getMinMaxValues", async (req, res) => {
   }
 });
 
+app.post("/api/loadCoalProperties", async (req, res) => {
+  try {
+    const coalProperties = await callStoredProcedure(
+      "SP_LoadProposedProperties",
+      req
+    );
+    res.status(200).json({ coalProperties });
+  } catch (error) {
+    res.status(500).json({ error: error.message });
+  }
+});
+
 app.post("/api/updateCoalProperties", async (req, res) => {
   try {
     const coalProperties = await callStoredProcedure(
