@@ -23,68 +23,8 @@ let pythonProcess = null;
    console.error("Failed to decrypt:", err.message);
  }
 const decrypted = {
-    "p_CoalId": 1,
-    "p_DatedOn": "2025-04-07",
-    "p_CoalType": "Imported",
-    "p_CurrentValue": 50.0,
-    "p_ICPAsh": 10.5,
-    "p_ICPVM": 25.0,
-    "p_ICPMoisture": 5.0,
-    "p_ICPMaxContraction": 2.0,
-    "p_ICPMaxExpansion": 4.5,
-    "p_ICPMaxFluidity": 3000.0,
-    "p_ICPMMR": 1.2,
-    "p_ICPHGI": 60.0,
-    "p_ICPSofteningTemperatureDegC": 1100.0,
-    "p_ICPResolidificationTempMinDegC": 900.0,
-    "p_ICPResolidificationTempMaxDegC": 1050.0,
-    "p_ICPPlasticRangeDegC": 150.0,
-    "p_ICPSulphur": 0.7,
-    "p_ICPPhosphorous": 0.02,
-    "p_ICPCSN": 6.0,
-    "p_ICPCostInr": 8500.0,
-    "p_BCPAsh": 12.0,
-    "p_BCPVM": 22.0,
-    "p_BCPMoisture": 6.0,
-    "p_BCPMaxContraction": 1.5,
-    "p_BCPMaxExpansion": 3.0,
-    "p_BCPMaxFluidity": 2500.0,
-    "p_BCPCrushingIndex315mm": 90.0,
-    "p_BCPCrushingIndex05mm": 8.0,
-    "p_BCPSofteningTemperatureDegC": 1080.0,
-    "p_BCPResolidificationTempMinDegC": 880.0,
-    "p_BCPResolidificationTempMaxDegC": 1020.0,
-    "p_BCPPlasticRangeDegC": 140.0,
-    "p_BCPSulphur": 0.8,
-    "p_BCPPhosphorous": 0.03,
-    "p_BCPCSN": 5.5,
-    "p_CPAsh": 11.0,
-    "p_CPVM": 23.5,
-    "p_CPM40": 80.0,
-    "p_CPM10": 6.0,
-    "p_CPCSR": 60.0,
-    "p_CPCRI": 22.0,
-    "p_CPAMS": 7.5,
-    "p_PPChargingTonnage": 40.0,
-    "p_PPMoistureContent": 3.5,
-    "p_PPBulkDensity": 0.85,
-    "p_PPChargingTemperature": 250.0,
-    "p_PPBatteryOperatingTemp": 1150.0,
-    "p_PPCrossWallTemp": 1155.0,
-    "p_PPPushForce": 60.0,
-    "p_PPPRI": 1.1,
-    "p_PPCokePerPush": 3.0,
-    "p_PPGrossCokeYield": 78.0,
-    "p_PPGCMPressure": 1.5,
-    "p_PPGCMTemp": 250.0,
-    "p_PPCokingTime": 18.0,
-    "p_PPCokeEndTemp": 900.0,
-    "p_PPQuenchingTime": 2.0,
-    "p_PPHeaderTemp": 300.0,
-    "p_CompanyId": 1,
-    "p_UserId": 101,
-    "p_FileId": 555
-  }
+  "companyId": 1, // replace with dynamic value if needed
+}
   
   
   
@@ -177,6 +117,18 @@ app.post("/api/getCoalProperties", async (req, res) => {
   try {
     const coalProperties = await callStoredProcedure(
       "SP_GetCoalProperties",
+      req
+    );
+    res.status(200).json({ coalProperties });
+  } catch (error) {
+    res.status(500).json({ error: error.message });
+  }
+});
+
+app.post("/api/getMinMaxValues", async (req, res) => {
+  try {
+    const coalProperties = await callStoredProcedure(
+      "SP_GetMinMaxValues",
       req
     );
     res.status(200).json({ coalProperties });
