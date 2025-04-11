@@ -391,7 +391,6 @@ app.post("/api/getIndividualCoalPropertiesByName", async (req, res) => {
 });
 
 // **Start Server**
-app.listen(port, () => {
-  console.log(`API running at http://localhost:${port}`);
-  startPythonServer();
+app.listen(3000, '0.0.0.0', () => {
+  console.log('Server listening on port 3000');
 });
