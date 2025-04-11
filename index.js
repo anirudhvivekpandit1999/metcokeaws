@@ -368,6 +368,17 @@ app.post("/api/getTrainingData", async (req, res) => {
   }
 });
 
+app.post("/api/getIndividualCoalProperty", async (req, res) => {
+  try {
+    const result = await callStoredProcedure("SP_GetIndividualCoalProperties ", req);
+    res.status(200).json({
+      encryptedData: result,
+    });
+  } catch (error) {
+    res.status(500).json({ error: error.message });
+  }
+});
+
 // **Start Server**
 app.listen(port, () => {
   console.log(`API running at http://localhost:${port}`);
