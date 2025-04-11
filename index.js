@@ -226,7 +226,7 @@ app.post("/api/login", async (req, res) => {
 
 app.post("/api/costAi", async (req, res) => {
   try {
-    const response = await sendData(req);
+    const response = await sendData(req.body);
     res.status(200).json({ response });
   } catch (error) {
     res.status(500).json({ error: error.message });
