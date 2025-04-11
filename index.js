@@ -67,7 +67,7 @@ async function startPythonServer(callback) {
 
 async function isPythonServerRunning() {
   try {
-    await axios.get("http://3.111.23.36:3001/health");
+    await axios.get("http://127.0.0.1:3001/health");
     return true;
   } catch {
     return false;
@@ -77,7 +77,7 @@ async function isPythonServerRunning() {
 // **Send Data to Python AI**
 async function sendData(data) {
   try {
-    const response = await axios.post("http://3.111.23.36:3001/ai", data, {
+    const response = await axios.post("http://127.0.0.1:3001/ai", data, {
       headers: { "Content-Type": "application/json" },
     });
     console.log("Response from AI:", response.data);
@@ -226,7 +226,7 @@ app.post("/api/login", async (req, res) => {
 
 app.post("/api/costAi", async (req, res) => {
   try {
-    const response = await sendData(req.body);
+    const response = await sendData(req);
     res.status(200).json({ response });
   } catch (error) {
     res.status(500).json({ error: error.message });
