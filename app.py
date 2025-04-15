@@ -505,12 +505,10 @@ def health_check():
     return "OK", 200            
 
 
-@app.route('/cost', methods=['POST'])
-def cost():
+
+def cost(data):
     
-        data = request.json  
-        if not data:
-            raise ValueError("No data received in the request") 
+    
         coal_blends = data.get("blends")
         coal_types = [blk["coalType"] for blk in coal_blends]
         min_percentages = [int(blk["minPercentage"]) for blk in coal_blends]
