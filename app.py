@@ -987,9 +987,7 @@ def cost(data):
             response["ProposedCoal"] = {
                 "error": "No valid blendcoal data provided, unable to make predictions."
             }       
-        return jsonify(response), 200
-
-
+        return response
 
 #coal properties page 
 CSV_FILE = 'individual_coal_prop.csv'
