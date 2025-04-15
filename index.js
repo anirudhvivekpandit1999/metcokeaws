@@ -77,7 +77,7 @@ async function isPythonServerRunning() {
 // **Send Data to Python AI**
 async function sendData(data) {
   try {
-    const response = await axios.post("http://3.111.23.36:3001/ai", data, {
+    const response = await axios.post("http://13.232.169.135:3001/ai", data, {
       headers: { "Content-Type": "application/json" },
     });
     console.log("Response from AI:", response.data);
