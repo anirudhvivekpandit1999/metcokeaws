@@ -3,7 +3,7 @@ const dbConfig = require("./db.config");
 const { encryptData, decryptData } = require("./encryption.utils");
 
 const pool = mysql.createPool({
-   host: "192.168.10.21",
+   host: "localhost",
    user: "metcoke",        // <-- Update this
    password: "Metcoke@1234",// <-- Update this
    database: "Metcoke",
