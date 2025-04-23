@@ -3,9 +3,9 @@ const dbConfig = require("./db.config");
 const { encryptData, decryptData } = require("./encryption.utils");
 
 const pool = mysql.createPool({
-   host: "13.232.169.135",
-   user: "cloudadmin99",        // <-- Update this
-   password: "Virtualmachine@123",// <-- Update this
+   host: "192.168.10.21",
+   user: "metcoke",        // <-- Update this
+   password: "Metcoke@1234",// <-- Update this
    database: "Metcoke",
    waitForConnections: true,
    connectionLimit: 10,
