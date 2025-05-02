@@ -14,7 +14,7 @@ const { decryptData, encryptData } = require("./encryption.utils");
 const app = express();
 const port = 3000;
 let pythonProcess = null;
- const encrypted = "bde0b8a2064676d8495d6575bd7d353c8d7bd468f629a2e45fae0a0f93d61744c7f460a0bd65ea8cf906bcfb6864beea9aa614ebf4b3d82d0a500796b9b3bb9e73389107add75af61ed080ede39cfaf7af3caedb773407c3c43277f923ac81d1e2243b7bdafd9a8bae9fc5735b99330874cbece27d5ddd50bf69ecfc00074597";
+ const encrypted = "db8dbf9bd00ad5974bbb7bcb4cbde1a71881170c9de26c453b546e636846e792a832d501bb30ac634b1ce8c0da04c66d8594faf3ef54341b9333fd9ca3c5776559044405cc639b546dc41399afc2308cbca882ceb325ac492a38ec499d158d840931af365c0a448efd58472d9992cdee431a28de641fdb8346beea74cb9afafcd662693f5cba44b27feee81478abdc104f3eee89a5e60c6f2366cd4c2af8ae60fe7a0b8bcd3bc6a533c5d2e17b9a94e9e804100fa40a6e3d35288fa3e237317c1dc88d726b704fb79962834c66a57d8aef220cf6232a72bbe47b95f8ebdbcd077a548c474c2bb79ca361ce1c1a3c9eab4f6c70b462384c2df9446b9fe74c9945707e8d5bbf8ca1139d6921b1bcde7f2566539203b7687b52aff9a9bd01b7d855";
 
  try {
    const result = decryptData(encrypted);
@@ -23,7 +23,8 @@ let pythonProcess = null;
    console.error("Failed to decrypt:", err.message);
  }
 const decrypted = {
-  "companyId": 1, // replace with dynamic value if needed
+  "Email" : "Abhitech_recovery@test.com", // replace with dynamic value if needed
+  "Password_Hash" : "jyRecoveryZax"
 }
   
   
