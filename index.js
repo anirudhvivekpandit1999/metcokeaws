@@ -150,6 +150,19 @@ app.post("/api/loadCoalProperties", async (req, res) => {
   }
 });
 
+app.post("/api/getCoalPropertiescsv", async (req, res) => {
+  try {
+    const response = await callStoredProcedure(
+      "SP_GetCoalPropertiesCSV",
+      req
+    );
+    res.status(200).json({ response });
+  } catch (error) {
+    res.status(500).json({ error: error.message });
+  }
+});
+
+
 app.post("/api/updateCoalProperties", async (req, res) => {
   try {
     const coalProperties = await callStoredProcedure(
