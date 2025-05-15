@@ -161,6 +161,19 @@ app.post("/api/getCoalPropertiescsv", async (req, res) => {
   }
 });
 
+
+app.post("/api/getCoalCount", async (req, res) => {
+  try {
+    const response = await callStoredProcedure(
+      "SP_GetCoalCount",
+      req
+    );
+    res.status(200).json({ response });
+  } catch (error) {
+    res.status(500).json({ error: error.message });
+  }
+});
+
 app.post("/api/getCokePropertiescsv", async (req, res) => {
   try {
     const response = await callStoredProcedure(
@@ -494,16 +507,6 @@ app.post("/api/getIndividualCoalPropertiesByName", async (req, res) => {
   }
 });
 
-app.post("/api/getCoalCount", async (req, res) => {
-  try {
-    const result = await callStoredProcedure("SP_GetCoalCount", req);
-    res.status(200).json({
-      encryptedData: result,
-    });
-  } catch (error) {
-    res.status(500).json({ error: error.message });
-  }
-});
 
 // **Start Server**
 app.listen(3000, '0.0.0.0', () => {
