@@ -290,6 +290,19 @@ app.post("/api/updateMinMaxValues", async (req, res) => {
   }
 });
 
+
+app.post("/api/addExtraColumns", async (req, res) => {
+  try {
+    const coalProperties = await callStoredProcedure(
+      "SP_AddNewColumn",
+      req
+    );
+    res.status(200).json({ coalProperties });
+  } catch (error) {
+    res.status(500).json({ error: error.message });
+  }
+});
+
 app.post("/api/insertCoalProperties", async (req, res) => {
   try {
     const coalProperties = await callStoredProcedure(
