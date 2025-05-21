@@ -14,7 +14,7 @@ const { decryptData, encryptData } = require("./encryption.utils");
 const app = express();
 const port = 3000;
 let pythonProcess = null;
- const encrypted = "40cf09b666de87a45735407913b3fffbf1a18f8e0972ebd6f1f2f042c96ade73745f495fa15a136f3af6c0a69888b064c3555c0f025500b38236a9faaff6d34ee5e0d7cd9110ed39232c3af0e548b88f37be5afa9eea4e919bceac651205ebbe1f7c3d4ba82da90b6aac78814c5e8d024bdd8d50210865feb4bc48cb9a501c7664c492dbaa2b1bf8319bd0677373c730";
+ const encrypted = "86a352b3b4a335fc9d4a82e501d659b4ae7edf0b038505ee8d242b231b853a7e10210e9d126fe46c5bc88f9837b4b547bccb9138aaf1730261f9f35aa9a74bc41e320fdd37d10493f95c8dd4cc7b7ec65e547375115ce5d4cf685d0e2cae3d22af270ffcba1ae62b3f29c5c23896e3e3f9c69a2dfe1d6bb64a6a6acec7d2ba098d243ae9e71bc2407de18ab4a93ff30b59f67329aed3c8dda0878fedac87c2d82293d3212636b7f1f3ee20a78f25fb7984d9ae46bd8b2fd2df5bad0afb5090ea";
 
  try {
    const result = decryptData(encrypted);
@@ -255,6 +255,19 @@ app.post("/api/getRecoveryTopChargecsv", async (req, res) => {
   try {
     const response = await callStoredProcedure(
       "SP_GetRecoveryTopChargeCSV",
+      req
+    );
+    res.status(200).json({ response });
+  } catch (error) {
+    res.status(500).json({ error: error.message });
+  }
+});
+
+
+app.post("/api/getMinMaxValuescsv", async (req, res) => {
+  try {
+    const response = await callStoredProcedure(
+      "SP_GetMinMaxValuesCSV",
       req
     );
     res.status(200).json({ response });
